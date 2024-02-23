@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+:root {
+    font-size: 62.5%;
+  
+    --base-color-green: hsl(139, 26%, 38%);
+    --base-color-green-ligth:hsla(139, 26%, 38%, 0.539);
+    --base-color-white: #FFFFFF;
+    --base-color-green-scale: hsla(138, 10%, 50%, 0.446);
+    --base-color-gray-light: #F4FCFF;
+}
+
+
+html, body, input {
+    font-family: 'Mulish', sans-serif;
+}
+
+input, input::placeholder {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 160%;
+}
+  
+.page {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 7.2rem 1fr 6.4rem;
+}
+  
+
+.page header {
+    padding: 1.6rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    background-color: var(--base-color-green);
+}
+
+#icon {
+    padding: 0.96rem 0.8rem;
+    background-color: var(--base-color-gray-greey);
+    border-radius: 50%;
+    filter: grayscale(50%);
+    opacity: 80;
+}
+
+
+#avatar {
+    border-radius: 50%;
+    width: 4.2rem;
+    height: 4.2rem;
+    object-fit: cover;
+}
+
+.page header form {
+    width: 100%;
+}
+  
+h1 {
+    font-size: 2.3rem;
+    font-weight: bold;
+    line-height: 160%;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 160%;
+}
+
+.page header form label {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+}
+
+.page header form input {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    background-color: var(--base-color-green-scale);
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.page header form input::placeholder {
+    width: 100%;
+    color: rgba(199, 199, 199, 0.618);
+}
+  
+.page main {
+    max-width: 80rem;
+    margin-inline: auto;
+}
+  
+.page main img {
+    width: 100%;
+}
+
+.page main img:hover {
+    filter: saturate(3);
+    transform: scale(1.1);
+}
+  
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+  
+.main-content article {
+    padding-inline: 1.5rem;
+}
+  
+.main-content article p {
+    font-size: 1.6rem;
+    line-height: 160%;
+}
+  
+.article-header {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+  
+.buttons button {
+    width: 4rem;
+    height: 4rem;
+    padding: 1.2rem;
+    background-color: var(--base-color-green);
+    border: none;
+    border-radius: 50%;
+}
+  
+.buttons button + button {
+    margin-left: 1.2rem;
+}
+  
+.main-content aside {
+    padding: 0 1.5rem 3rem; 
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+  
+.main-content aside a {
+    text-decoration: none;
+    color: black;
+}
+  
+.main-content aside a figure {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 1.5rem;
+    align-items: center;
+}
+
+  
+.img-wrapper {
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border-radius: .5rem;
+
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.img-wrapper:hover {
+    filter: saturate(3);
+    transform: scale(1.1);
+}
+
+.img-wrapper img {
+    height: 100%;
+    object-fit: cover;
+}
+  
+.main-content aside figure p {
+    font-size: 1.4rem;
+    line-height: 160%;
+}
+  
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base-color-green-ligth);
+    padding: 1.6rem;
+}
+
+footer p {
+    color: hsl(140, 11%, 95%);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.0rem;
+    text-align: center;
+} 
+
+
+@media (min-width: 1024px){
+    .page main {
+        max-width: 100%;
+    }
+    .main-content {
+        padding: 3rem 3rem 0;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: max-content;
+        gap: 3rem 3rem;
+    }
+    .main-content img {
+        grid-row: 1/ 2;
+        grid-column: 1/ 2;
+    }
+    .article-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .main-content aside {
+        padding: 0;
+        grid-row: 1/ 4;
+        grid-column: 2/3;
+    }
+}
+
+/*animation*/
+
+header {
+    --startY: -100%;
+    animation: move .2s;
+}
+
+footer {
+    --starY: 100%;
+    animation: move .2s;
+}
+
+.main-content aside a figure {
+    --delay: .1;
+    animation:  appear .1s var(--delay) backwards;
+}
+
+
+@keyframes move {
+    from {
+        transform: translateY(var(--startY));
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 50%;
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
